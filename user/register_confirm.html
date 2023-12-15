@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アカウント作成確認 - ECサイト</title>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        // セッションストレージからフォームデータを取得
+        document.addEventListener('DOMContentLoaded', function() {
+            const formData = JSON.parse(sessionStorage.getItem('form_data'));
+            if (formData) {
+                document.getElementById('username').textContent = formData.username;
+                document.getElementById('email').textContent = formData.email;
+                document.getElementById('last_name').textContent = formData.last_name;
+                document.getElementById('first_name').textContent = formData.first_name;
+                document.getElementById('last_name_kana').textContent = formData.last_name_kana;
+                document.getElementById('first_name_kana').textContent = formData.first_name_kana;
+                document.getElementById('zipcode').textContent = formData.zipcode;
+                document.getElementById('address').textContent = formData.address;
+                document.getElementById('phone').textContent = formData.phone;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="register-container">
+        <h2>アカウント作成確認</h2>
+        <p>ユーザー名: <span id="username"></span></p>
+        <p>メールアドレス: <span id="email"></span></p>
+        <p>氏: <span id="last_name"></span></p>
+        <p>名: <span id="first_name"></span></p>
+        <p>セイ: <span id="last_name_kana"></span></p>
+        <p>メイ: <span id="first_name_kana"></span></p>
+        <p>郵便番号: <span id="zipcode"></span></p>
+        <p>住所: <span id="address"></span></p>
+        <p>電話番号: <span id="phone"></span></p>
+        <form action="register_process.php" method="post">
+            <div class="form-footer">
+                <input type="button" onclick="history.back()" value="修正する" class="back-btn">
+                <input type="submit" value="アカウント作成" class="register-btn">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
