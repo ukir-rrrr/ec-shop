@@ -46,7 +46,7 @@ if ($user) {
         // ログイン成功
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
-        header("Location: ./index.php"); // ログイン後のページにリダイレクト
+        header("Location: ../index.php"); // ログイン後のページにリダイレクト
     } else {
         // ログイン失敗
         header("Location: login.html?error=invalid_credentials");
