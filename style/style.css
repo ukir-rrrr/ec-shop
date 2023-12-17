@@ -381,7 +381,7 @@ footer {
 
 /* ここからお問い合わせフォーム専用のスタイル */
 
-body {
+/* body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   display: flex;
@@ -400,58 +400,58 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; /* 水平方向に中央寄せ */
-}
+/* } */
 
 
-.form-header {
+/* .form-header {
   color: #333;
-}
+} */
 
-.form-label {
+/* .form-label {
   display: block;
   margin-top: 10px;
-}
+} */
 
-.form-input {
+/* .form-input {
   width: 100%; /* 名前の幅は100% */
-  height: 100px;
+  /* height: 100px;
   padding: 10px;
   margin-top: 6px;
   margin-bottom: 12px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+} */
 
-.form-email {
-  width: 100%; /* メールアドレスの幅は100% */
+/* .form-email { */
+  /* width: 100%; メールアドレスの幅は100%
   padding: 10px;
   margin-top: 6px;
   margin-bottom: 12px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+} */
 
-.form-textarea {
+/* .form-textarea {
   width: 100%; /* お問い合わせ本文の幅は100% */
-  padding: 10px;
+  /* padding: 10px;
   margin-top: 6px;
   margin-bottom: 12px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+} */
 
-.form-button {
+/* .form-button {
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+} */
 
-.form-button:hover {
+/* .form-button:hover {
   background-color: #45a049;
-}
+} */

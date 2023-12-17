@@ -10,11 +10,17 @@ CREATE TABLE Users (
     Username VARCHAR(50) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
-    Address TEXT
+    Address TEXT,
     Phone VARCHAR(20),
     Last_name VARCHAR(50),
     First_name VARCHAR(50),
     Last_name_kana VARCHAR(50),
     First_name_kana VARCHAR(50),
     Zipcode VARCHAR(7)
+);
+
+CREATE TABLE staff (
+    code INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    Password VARCHAR(30) NOT NULL
 );

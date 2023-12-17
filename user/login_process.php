@@ -1,3 +1,4 @@
+<!-- http://localhost/EC-shop/user/login_process.php -->
 <?php
 session_start();
 
@@ -40,13 +41,16 @@ $stmt->execute();
 // 結果を取得
 $user = $stmt->fetch();
 
+// var_dump($user);
+
 if ($user) {
     // パスワードを確認（password_verifyでハッシュ化されたパスワードを照合）
-    if (password_verify($password, $user['password'])) {
+
+    if (password_verify($password, $user['Password'])) {
         // ログイン成功
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['email'] = $user['email'];
-        header("Location: ../index.php"); // ログイン後のページにリダイレクト
+        $_SESSION['user_id'] = $user['Userid'];
+        $_SESSION['email'] = $user['Email'];
+        header("Location: ../index.html"); // ログイン後のページにリダイレクト
     } else {
         // ログイン失敗
         header("Location: login.html?error=invalid_credentials");
