@@ -19,12 +19,13 @@
           </div>
           <div class="right-nav">
               <ul>
-                  <li><a href="mypage.html">マイページ</a></li>
+                  <li><a href="./user/mypage.php">マイページ</a></li>
                   <?php
                         // セッションが開始されている場合にのみログイン状態を確認
                         session_start();
                         if (isset($_SESSION['user_id'])) {
-                            echo '<li><a href="./user/logout.php">ログアウト</a></li>';
+                            echo '<li><a href="./user/logout_confirm.php
+                            ">ログアウト</a></li>';
                         } else {
                             echo '<li><a href="./user/login.html">ログイン</a></li>';
                         }

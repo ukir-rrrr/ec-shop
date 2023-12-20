@@ -48,8 +48,9 @@ if ($user) {
 
     if (password_verify($password, $user['Password'])) {
         // ログイン成功
-        $_SESSION['user_id'] = $user['Userid'];
+        $_SESSION['user_id'] = $user['UserID'];
         $_SESSION['email'] = $user['Email'];
+        $_SESSION['user_name'] = $user['username'];
         header("Location: ../index.php"); // ログイン後のページにリダイレクト
     } else {
         // ログイン失敗
