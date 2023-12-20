@@ -24,3 +24,23 @@ CREATE TABLE staff (
     name VARCHAR(20) NOT NULL,
     Password VARCHAR(30) NOT NULL
 );
+
+-- categoriesテーブル
+CREATE TABLE categories (
+    id INT PRIMARY KEY,
+    category_id INT UNIQUE NOT NULL,
+    category_name VARCHAR(255) NOT NULL
+);
+
+-- productsテーブル
+CREATE TABLE products (
+    id INT PRIMARY KEY,
+    category_id INT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);

@@ -6,4 +6,12 @@ function sanitize($before) {
     }
     return $after;
 }
+
+function pulldown_cate() {
+    echo "<select name='cate'>";
+    echo "<option value='メンズ'>メンズ</option>";
+    echo "<option value='ウィメンズ'>ウィメンズ</option>";
+    echo "<option value='キッズ'>キッズ</option>";
+    echo "</select>";
+}
 ?>
