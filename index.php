@@ -1,4 +1,4 @@
-<!-- http://localhost/EC-shop/index.html -->
+<!-- http://localhost/EC-shop/index.php -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,17 +12,23 @@
       <nav>
           <div class="left-nav">
               <ul>
-                  <li><a href="index.html">ホーム</a></li>
+                  <li><a href="index.php">ホーム</a></li>
                   <li><a href="#">新着商品</a></li>
-                  <li><a href="#">人気商品</a></li>
-                  <li><a href="#">セール</a></li>
                   <li><a href="./user/contactform.php">お問い合わせ</a></li>
               </ul>
           </div>
           <div class="right-nav">
               <ul>
                   <li><a href="mypage.html">マイページ</a></li>
-                  <li><a href="./user/login.html">ログイン</a></li>
+                  <?php
+                        // セッションが開始されている場合にのみログイン状態を確認
+                        session_start();
+                        if (isset($_SESSION['user_id'])) {
+                            echo '<li><a href="./user/logout.php">ログアウト</a></li>';
+                        } else {
+                            echo '<li><a href="./user/login.html">ログイン</a></li>';
+                        }
+                    ?>
                   <li><a href="favorites.html">お気に入り</a></li>
                   <li><a href="cart.html">カートを見る</a></li>
               </ul>
