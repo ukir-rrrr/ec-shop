@@ -35,28 +35,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ユーザーIDをセッションから取得
     $userID = $_SESSION['user_id'];
 
-    // パスワードのハッシュ化（セキュリティ上の理由）
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
     // パスワードを確認してユーザーアカウントを削除
+$stmt = $pdo->prepare("SELECT Password FROM Users WHERE UserID = :user_id");
+$stmt->bindParam(':user_id', $userID, PDO::PARAM_INT);
+$stmt->execute();
 
-    $stmt = $pdo->prepare("DELETE FROM Users WHERE UserID = :user_id AND Password = :password");
-    $stmt->bindParam(':user_id', $userID, PDO::PARAM_INT);
-    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+// パスワードの取得
+$storedPassword = $stmt->fetchColumn();
 
-    if ($stmt->execute()) {
+// 入力されたパスワードとデータベースから取得したパスワードを照合
+if (password_verify($_POST['password'], $storedPassword)) {
+    // パスワードが一致する場合、ユーザーアカウントを削除
+    $deleteStmt = $pdo->prepare("DELETE FROM Users WHERE UserID = :user_id");
+    $deleteStmt->bindParam(':user_id', $userID, PDO::PARAM_INT);
+
+    if ($deleteStmt->execute()) {
         // ユーザーアカウントの削除に成功
         session_destroy(); // セッションを破棄してログアウト状態にする
         header("Location: deleted_successfully.php"); // 退会成功ページにリダイレクト
         exit;
     } else {
-        // パスワードが一致しない場合
-        header("Location: delete_account_confirm.php?error=password_mismatch");
+        // データベースのエラー処理
+        header("Location: delete_account_confirm.php?error=database_error");
         exit;
     }
-} else {
-    // 不正なアクセスを検知した場合
-    header("Location: delete_account_confirm.php");
+    } else {
+    // パスワードが一致しない場合
+    header("Location: delete_account_confirm.php?error=password_mismatch");
     exit;
-}
+    }
+
+  }
 ?>

@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
+<!-- http://localhost/EC-shop/staff/staff_login.php -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">

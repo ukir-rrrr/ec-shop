@@ -1,5 +1,5 @@
 <?php
-// http://localhost/EC-shop/staff/staff_login_top.php
+// http://localhost/EC-shop/products/product_top.php
 session_start();
 session_regenerate_id(true);
 if(isset($_SESSION["login"]) === false) {
@@ -17,23 +17,23 @@ if(isset($_SESSION["login"]) === false) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>管理画面TOP</title>
+<title>商品管理TOP</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
-管理画面TOP<br><br>
-    <a href="staff_list.php">スタッフ管理</a>
+商品管理TOP<br><br>
+    <a href="mens_list.php">メンズ</a>
     <br><br>
-    <a href="../products/product_top.php">商品管理</a>
+    <a href="womens.php">ウィメンズ</a>
     <br><br>
-    <a href="user_top.php">ユーザー管理</a>
+    <a href="kids.php">キッズ</a>
     <br><br>
-    <a href="XXX_top.php">売上管理</a>
+    <a href="product_add.php">商品追加</a>
     <br><br>
-    <a href="XXXXXX_top.php">問い合わせ管理</a>
+    <a href="../staff/staff_login_top.php">管理画面TOPへ</a>
     <br><br>
-    <a href="staff_logout.php">ログアウト</a>
+    <a href="../staff/staff_logout.php">ログアウト</a>
 </body>
 </html>

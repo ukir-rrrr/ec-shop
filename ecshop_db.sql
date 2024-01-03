@@ -44,3 +44,24 @@ CREATE TABLE products (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
+
+
+CREATE TABLE categories (
+    id INT PRIMARY KEY,
+    category_id INT(11) NOT NULL,
+    category_name VARCHAR(255) NOT NULL
+);
+
+-- productsテーブル
+CREATE TABLE products (
+    id INT PRIMARY KEY,
+    category_id VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    image_path VARCHAR(255),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);

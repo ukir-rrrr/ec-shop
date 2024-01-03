@@ -53,7 +53,7 @@ $user = $stmt->fetch();
 
     <div class="main-content">
         <h1>プロフィール編集</h1>
-        <form action="./user/update_profile.php" method="post">
+        <form action="update_profile.php" method="post">
             <label for="username">ユーザー名:</label>
             <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
 

@@ -27,7 +27,7 @@ $rec = $stmt -> fetch(PDO::FETCH_ASSOC);
 
 if(empty($rec["name"]) === true) {
     echo "入力が間違っています。<br><br>";
-    echo "<a href='staff_login.html'>戻る</a>";
+    echo "<a href='staff_login.php'>戻る</a>";
     exit();
 } else {
     session_start();
