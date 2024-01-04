@@ -1,5 +1,6 @@
 <?php
 // http://localhost/EC-shop/products/mens.php
+session_start();
 // データベース接続
 require_once("../Databaseclass/Databaseclass.php");
 $pdo = connectToDatabase($host, $dbname, $username, $password);
@@ -16,6 +17,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo "<h3>" . $row['name'] . "</h3>";
     echo "<p>価格: " . intval($row['price']) . "円</p>";
     echo "<p>詳細: " . $row['description'] . "</p>";
+
+    // カートに追加ボタン
+    echo "<form action='../cart/add_to_cart.php' method='post'>";
+    echo "<input type='hidden' name='product_id' value='" . $row['id'] . "'>";
+    echo "<input type='submit' value='カートに追加'>";
+    echo "</form>";
     echo "</div>";
 }
 ?>

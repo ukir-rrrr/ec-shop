@@ -3,21 +3,6 @@
 <?php
 session_start();
 
-// // データベース接続情報
-// $host = 'localhost';
-// $dbname = 'ecshop_db';
-// $username = 'ecshop_user';
-// $password = 'ecshop_pass';
-
-// // データベース接続
-// require_once("./Databaseclass/Databaseclass.php"); // データベース接続関数を含むファイルのパスを指定
-// $pdo = connectToDatabase($host, $dbname, $username, $password);
-
-// // 各カテゴリごとに商品を表示するためのクエリを実行
-// $mens_products = $pdo->query("SELECT * FROM products WHERE category_id = 1")->fetchAll(PDO::FETCH_ASSOC);
-// $womens_products = $pdo->query("SELECT * FROM products WHERE category_id = 2")->fetchAll(PDO::FETCH_ASSOC);
-// $kids_products = $pdo->query("SELECT * FROM products WHERE category_id = 3")->fetchAll(PDO::FETCH_ASSOC);
-
 
 ?>
 <!DOCTYPE html>

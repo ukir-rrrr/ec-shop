@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $image_path = ''; // 画像の保存先の初期化
 
     // ディレクトリが存在しない場合は作成
-    $uploadDirectory = 'EC-shop/main-image/';
+    $uploadDirectory = '../main-image/';
     if (!file_exists($uploadDirectory)) {
         mkdir($uploadDirectory, 0755, true);
     }
