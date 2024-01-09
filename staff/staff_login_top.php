@@ -32,8 +32,8 @@ if(isset($_SESSION["login"]) === false) {
     <br><br>
     <a href="XXX_top.php">売上管理</a>
     <br><br>
-    <a href="XXXXXX_top.php">問い合わせ管理</a>
-    <br><br>
+    <!-- <a href="staff_contact.php">問い合わせ管理</a>
+    <br><br> -->
     <a href="staff_logout.php">ログアウト</a>
 </body>
 </html>

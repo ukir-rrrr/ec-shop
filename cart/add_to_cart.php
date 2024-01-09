@@ -161,4 +161,17 @@ if (isset($_POST["product_id"])) {
     // 商品IDが指定されていない場合のエラーメッセージ
     echo "商品が指定されていません。";
 }
+
+// ログイン状態によって表示を変更
+  if (isset($_SESSION['user_id'])) {
+    // ログインしている場合
+    echo "<form action='checkout.php' method='post'>";
+    echo "<input type='submit' value='レジへ進む'>";
+    echo "</form>";
+  } else {
+    // ログインしていない場合
+    echo "<form action='../user/login.html' method='post'>";
+    echo "<input type='submit' value='ログインしてレジへ進む'>";
+    echo "</form>";
+  }
 ?>

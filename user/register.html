@@ -1,3 +1,5 @@
+<!-- register.html -->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,40 +11,41 @@
 <body>
     <div class="register-container">
         <h2>アカウント作成</h2>
-        <form action="register_confirm.php" method="post">
+        <form action="register_confirm.php" method="post" onsubmit="return validateForm()">
             <div class="form-group">
                 <label for="username">ユーザー名:</label>
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
                 <label for="email">メールアドレス:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="正しい形式のメールアドレスを入力してください">
             </div>
             <div class="form-group">
-                <label for="password">パスワード:</label>
+                <label for="password">パスワード: ※8文字以上20文字以下</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <!-- 名前のフィールド -->
             <div class="form-group-inline">
-              <div class="input-field">
-                <label for="last_name">氏</label>
-                <input type="text" id="last_name" name="last_name" required>
-              </div>
-              <div class="input-field">
-                <label for="first_name">名</label>
-                <input type="text" id="first_name" name="first_name" required>
-              </div>
+                <div class="input-field">
+                    <label for="last_name">氏</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="input-field">
+                    <label for="first_name">名</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
             </div>
             <!-- フリガナのフォームグループ -->
             <div class="form-group-inline">
-              <div class="input-field">
-                <label for="last_name_kana">セイ</label>
-                <input type="text" id="last_name_kana" name="last_name_kana" required>
-              </div>
-              <div class="input-field">
-                <label for="first_name_kana">メイ</label>
-                <input type="text" id="first_name_kana" name="first_name_kana" required>
-              </div>
+                <div class="input-field">
+                    <label for="last_name_kana">セイ</label>
+                    <input type="text" id="last_name_kana" name="last_name_kana" required>
+                </div>
+                <div class="input-field">
+                    <label for="first_name_kana">メイ</label>
+                    <input type="text" id="first_name_kana" name="first_name_kana" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="zipcode">郵便番号:(ハイフン無し)</label>
@@ -60,9 +63,24 @@
                 <button type="submit">アカウント作成</button>
             </div>
             <div class="form-footer">
-              <button onclick="history.back()" class="back-btn">前のページに戻る</button>
+                <button type="button" onclick="history.back()" class="back-btn">前のページに戻る</button>
             </div>
         </form>
+        <!-- JavaScriptを使用 -->
+        <script>
+            function validatePassword() {
+                var password = document.getElementById("password").value;
+                if (password.length < 8 || password.length > 20) {
+                    alert("パスワードは8文字以上20文字以下で入力してください。");
+                    return false;
+                }
+                return true;
+            }
+
+            function validateForm() {
+                return validatePassword();
+            }
+        </script>
     </div>
 </body>
 </html>

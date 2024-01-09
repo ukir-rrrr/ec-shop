@@ -1,22 +1,21 @@
 <?php
 //CSRF対策
 // セッションの利用を開始
-session_start();
+// session_start();
 
-// セッションのflashメッセージをクリア
-$flash = isset($_SESSION['flash']) ? $_SESSION['flash'] : [];
-unset($_SESSION['flash']);
+// // セッションのflashメッセージをクリア
+// unset($_SESSION['flash']);
 
-// 過去のPOSTデータをクリア
-$original = isset($_SESSION['original']) ? $_SESSION['original'] : [];
-unset($_SESSION['original']);
+// // 過去のPOSTデータをクリア
+// unset($_SESSION['original']);
 
-// ワンタイムトークン生成
-$toke_byte = openssl_random_pseudo_bytes(16);
-$csrf_token = bin2hex($toke_byte);
 
-// トークンをセッションに保存
-$_SESSION['csrf_token'] = $csrf_token;
+// // ワンタイムトークン生成
+// $csrf_token = bin2hex(random_bytes(16));
+
+// // トークンをセッションに保存
+// $_SESSION['csrf_token'] = $csrf_token;
+
 ?>
 
 <!-- contact.html -->
