@@ -28,12 +28,12 @@ if(isset($_SESSION["login"]) === false) {
     <br><br>
     <a href="../products/product_top.php">商品管理</a>
     <br><br>
-    <a href="user_top.php">ユーザー管理</a>
+    <a href="user_list.php">ユーザー管理</a>
     <br><br>
-    <a href="XXX_top.php">売上管理</a>
+    <a href="sales_manage.php">売上管理</a>
     <br><br>
-    <!-- <a href="staff_contact.php">問い合わせ管理</a>
-    <br><br> -->
+    <a href="staff_contact.php">問い合わせ管理</a>
+    <br><br>
     <a href="staff_logout.php">ログアウト</a>
 </body>
 </html>

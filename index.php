@@ -30,12 +30,11 @@ session_start();
                         echo '<li>' . htmlspecialchars($_SESSION['user_name'], ENT_QUOTES) . '様 ログイン中</li>';
                         echo '<li><a href="./user/mypage.php">マイページ</a></li>';
                         echo '<li><a href="./user/logout_confirm.php">ログアウト</a></li>';
-                        echo '<li><a href="cart.html">カートを見る</a></li>';
                     } else {
-                        echo '<li><a href="./user/login.html">ログイン</a></li>';
-                        echo '<li><a href="./user/login.html">カートを見る</a></li>';
+                        echo '<li><a href="./user/login.php">ログイン</a></li>';
                     }
                     ?>
+                    <li><a href="./cart/shopping_cart.php?view_cart=true">カートを見る</a></li>
                 </ul>
                 <form action="/search" method="get" class="search-form">
                     <input type="text" name="q" placeholder="検索...">

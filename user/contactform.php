@@ -1,24 +1,52 @@
 <?php
-//CSRF対策
-// セッションの利用を開始
-// session_start();
+// // データベース接続
+// require_once("../Databaseclass/Databaseclass.php");
+// $pdo = connectToDatabase($host, $dbname, $username, $password);
 
-// // セッションのflashメッセージをクリア
-// unset($_SESSION['flash']);
+// // POSTリクエストの場合のみ処理を実行
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+//     // フォームからのデータを取得
+//     $name = $_POST["name"];
+//     $email = $_POST["email"];
+//     $message = $_POST["message"];
 
-// // 過去のPOSTデータをクリア
-// unset($_SESSION['original']);
+//     // 入力データのバリデーション
+//     $errors = [];
+//     if (empty($name)) {
+//         $errors["name"] = "お名前を入力してください。";
+//     }
+//     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//         $errors["email"] = "正しいメールアドレスを入力してください。";
+//     }
+//     if (empty($message)) {
+//         $errors["message"] = "お問い合わせ内容を入力してください。";
+//     }
 
+//     // バリデーションエラーがない場合のみデータベースに登録
+//     if (empty($errors)) {
+//         try {
+//             // SQL文を作成
+//             $sql = "INSERT INTO inquiries (name, email, message) VALUES (?, ?, ?)";
+//             // プリペアドステートメントを作成
+//             $stmt = $pdo->prepare($sql);
+//             // プリペアドステートメントに値をバインドして実行
+//             $stmt->execute([$name, $email, $message]);
 
-// // ワンタイムトークン生成
-// $csrf_token = bin2hex(random_bytes(16));
-
-// // トークンをセッションに保存
-// $_SESSION['csrf_token'] = $csrf_token;
-
+//             // 成功メッセージを表示
+//             echo "お問い合わせが送信されました。";
+//         } catch (PDOException $e) {
+//             // エラーメッセージを表示
+//             echo "エラーが発生しました：" . $e->getMessage();
+//         }
+//     } else {
+//         // エラーメッセージを表示
+//         echo "入力エラーがあります。";
+//     }
+// }
 ?>
 
-<!-- contact.html -->
+
+
 <!DOCTYPE html>
 <html lang="ja">
 

@@ -8,6 +8,21 @@
 <body>
     <div class="login-container">
         <h2>ログイン</h2>
+
+        <!-- エラーメッセージ表示用の部分 -->
+        <?php
+        if (isset($_GET['error'])) {
+            $error = $_GET['error'];
+            if ($error === 'invalid_credentials') {
+                echo '<p style="color: red;">ログインに失敗しました。入力情報を確認してください。</p>';
+            } elseif ($error === 'user_not_found') {
+                echo '<p style="color: red;">ユーザーが見つかりませんでした。</p>';
+            }
+        }
+        ?>
+        <!-- エラーメッセージ表示用の部分 -->
+
+        
         <form action="../user/login_process.php" method="post">
             <div class="form-group">
                 <label for="email">メールアドレス</label>

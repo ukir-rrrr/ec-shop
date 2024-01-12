@@ -54,10 +54,10 @@ if ($user) {
         header("Location: ../index.php"); // ログイン後のページにリダイレクト
     } else {
         // ログイン失敗
-        header("Location: login.html?error=invalid_credentials");
+        header("Location: login.php?error=invalid_credentials");
     }
 } else {
     // ユーザーが見つからない
-    header("Location: login.html?error=user_not_found");
+    header("Location: login.php?error=user_not_found");
 }
 ?>

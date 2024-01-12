@@ -40,20 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['continue'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お支払い方法選択</title>
     <link rel="stylesheet" href="../style/style.css">
-    <style>
-        /* 必要なスタイルを追加 */
-        .form-container {
-            margin-top: 20px;
-        }
-        .payment-method-container {
-            display: flex;
-            flex-direction: column;
-        }
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
+
 </head>
 <body>
     <h2>お支払い・お届け先情報</h2>
@@ -68,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['continue'])) {
       <label for="payment_method">お支払い方法:</label>
       <input type="radio" name="payment_method" value="cash_on_delivery" <?php echo (isset($_SESSION['payment_method']) && $_SESSION['payment_method'] === 'cash_on_delivery') ? 'checked' : ''; ?>> 代金引換
       <input type="radio" name="payment_method" value="credit_card" <?php echo (isset($_SESSION['payment_method']) && $_SESSION['payment_method'] === 'credit_card') ? 'checked' : ''; ?>> クレジットカード
+      <input type="submit" name="continue" value="続行">
     </form>
 
 
@@ -76,9 +64,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['continue'])) {
         <input type="submit" name="card_info" value="カード情報入力">
     </form>
 
-    <!-- 続行ボタン -->
-    <form action="checkout.php" method="post" class="form-container">
-        <input type="submit" name="continue" value="続行">
-    </form>
 </body>
 </html>

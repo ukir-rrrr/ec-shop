@@ -61,11 +61,13 @@ if (empty($_SESSION["cart"])) {
         }
     }
 
-    // お支払い方法の表示
-    echo "<p>お支払い方法: " . (isset($_SESSION['payment_method']) ? ($_SESSION['payment_method'] === 'cash_on_delivery' ? '代金引換' : 'クレジットカード') : '') . "</p>";
+    // // お支払い方法の表示
+    // echo "<p>お支払い方法: " . (isset($_SESSION['payment_method']) ? ($_SESSION['payment_method'] === 'cash_on_delivery' ? '代金引換' : 'クレジットカード') : '') . "</p>";
 
-    // デバッグ用
-    echo "<p>デバッグ: "; var_dump($_SESSION); echo "</p>";
+    // お支払い方法の表示
+    $payment_method = isset($_SESSION['payment_method']) ? ($_SESSION['payment_method'] === 'cash_on_delivery' ? '代金引換' : 'クレジットカード') : '';
+    echo "<p>お支払い方法: " . $payment_method . "</p>";
+
 
     // } else {
     //     echo "未選択";
@@ -82,8 +84,13 @@ if (empty($_SESSION["cart"])) {
     echo "<br><br>";
 
     // 注文確定ボタン
-    echo "<form action='process_order.php' method='post'>";
-    echo "<input type='submit' name='confirm_order' value='注文確定'>";
-    echo "</form>";
+    if ($payment_method !== '') {
+        echo "<form action='process_order.php' method='post'>";
+        echo "<input type='submit' name='confirm_order' value='注文確定'>";
+        echo "</form>";
+    } else {
+        echo "<input type='submit' name='confirm_order' value='注文確定'>";
+        echo "<p style='color: black;'>お支払い方法を選択してください。</p>";
+    }
 }
 ?>

@@ -6,36 +6,8 @@ session_start();
 require_once("../Databaseclass/Databaseclass.php");
 $pdo = connectToDatabase($host, $dbname, $username, $password);
 
-// 商品IDがPOSTで送られてきたか確認
-if (isset($_POST["product_id"])) {
-    $product_id = $_POST["product_id"];
-
-    // カートがセッションに存在しない場合は初期化
-    if (!isset($_SESSION["cart"])) {
-        $_SESSION["cart"] = [];
-    }
-
-    // カートに商品を追加
-    if (!in_array($product_id, $_SESSION["cart"])) {
-        $_SESSION["cart"][] = $product_id;
-
-        // 新しく追加された商品の数量を初期化
-        $_SESSION["cart_quantity"][$product_id] = 1;
-
-        echo "商品をカートに追加しました。";
-    } else {
-        // 商品がすでにカートに存在する場合
-        if (isset($_POST["quantity"])) {
-            // 商品数量を変更した場合
-            $quantity = $_POST["quantity"];
-            $_SESSION["cart_quantity"][$product_id] = $quantity;
-            echo "商品数量を変更しました。";
-        } else {
-            // 商品がすでに存在している旨を表示
-            echo "選択した商品はすでにカートに存在します。";
-        }
-    }
-
+// ホーム画面から「カートを見る」がクリックされたかを確認
+if (isset($_GET["view_cart"])) {
     // カート内の商品情報を表示
     echo "<h2>カート内の商品</h2>";
     echo "<ul>";
@@ -91,6 +63,21 @@ if (isset($_POST["product_id"])) {
     echo "<input type='submit' value='買い物を続ける'>";
     echo "</form>";
 
+    // ログイン状態によって表示を変更
+    if (isset($_SESSION['user_id'])) {
+        // ログインしている場合
+        echo "<form action='checkout.php' method='post'>";
+        echo "<input type='submit' value='レジへ進む'>";
+        echo "</form>";
+    } else {
+        // ログインしていない場合
+        echo "<form action='../user/login.php' method='post'>";
+        echo "<input type='submit' value='ログインしてレジへ進む'>";
+        echo "</form>";
+    }
+
+    // ビューが終了したらexitで終了
+    exit();
 } elseif (isset($_POST["remove"]) && isset($_POST["remove_product_id"])) {
     // 商品の削除が要求された場合
     $remove_product_id = $_POST["remove_product_id"];
@@ -152,9 +139,6 @@ if (isset($_POST["product_id"])) {
     // カート合計金額を表示
     echo "<p>カート合計金額: " . $total_price . "円</p>";
 
-    // セッションを保存
-    session_write_close();
-
     // 買い物を続けるボタン
     echo "<form action='../index.php' method='post'>";
     echo "<input type='submit' value='買い物を続ける'>";
@@ -166,15 +150,15 @@ if (isset($_POST["product_id"])) {
 }
 
 // ログイン状態によって表示を変更
-  if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])) {
     // ログインしている場合
     echo "<form action='checkout.php' method='post'>";
     echo "<input type='submit' value='レジへ進む'>";
     echo "</form>";
-  } else {
+} else {
     // ログインしていない場合
     echo "<form action='../user/login.php' method='post'>";
     echo "<input type='submit' value='ログインしてレジへ進む'>";
     echo "</form>";
-  }
+}
 ?>

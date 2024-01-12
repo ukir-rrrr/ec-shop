@@ -32,10 +32,6 @@ $name = $post["name"];
 $pass = $post["pass"];
 $pass2 = $post["pass2"];
 
-// $name = htmlspecialchars($_POST["name"], ENT_QUOTES, "UTF-8");
-// $pass = htmlspecialchars($_POST["pass"], ENT_QUOTES, "UTF-8");
-// $pass2 = htmlspecialchars($_POST["pass2"], ENT_QUOTES, "UTF-8");
-
 if(empty($name) === true) {
     echo "名前が入力されていません。<br><br>";
 } else {
