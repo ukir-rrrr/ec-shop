@@ -29,7 +29,7 @@ $newImageUploaded = isset($_FILES['new_image']) && $_FILES['new_image']['error']
 // ファイルがアップロードされている場合、適切な処理を行う
 if ($newImageUploaded) {
     // 画像のアップロード処理
-    $uploadDirectory = 'EC-shop/main-image/'; // 実際の保存先に変更する
+    $uploadDirectory = '../main-image/'; // 実際の保存先に変更する
     $uploadedFileName = basename($_FILES['new_image']['name']);
     $newImagePath = $uploadDirectory . $uploadedFileName;
     move_uploaded_file($_FILES['new_image']['tmp_name'], $newImagePath);
@@ -52,6 +52,6 @@ $stmt = $pdo->prepare("UPDATE products SET name=?, description=?, price=?, image
 $stmt->execute([$name, $description, $price, $newImagePath, $id]);
 
 echo "商品を修正しました。";
-echo "<a href='mens_list.php'>商品一覧へ</a>";
+echo "<a href='product_top.php'>管理TOPへ</a>";
 
 ?>

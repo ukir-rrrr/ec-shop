@@ -2,28 +2,10 @@
 <?php
 session_start();
 
-// データベース接続設定
-$dbHost = 'localhost';
-$dbUser = 'ecshop_user';
-$dbPass = 'ecshop_pass';
-$dbName = 'ecshop_db';
-$charset = 'utf8mb4';
+// データベース接続
+require_once("../Databaseclass/Databaseclass.php");
+$pdo = connectToDatabase($host, $dbname, $username, $password);
 
-// DSN（Data Source Name）の設定
-$dsn = "mysql:host=$dbHost;dbname=$dbName;charset=$charset";
-
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES => false,
-];
-
-try {
-    // PDOインスタンスの作成
-    $pdo = new PDO($dsn, $dbUser, $dbPass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
 
 // ユーザー入力を取得
 $email = $_POST['email'];
@@ -44,17 +26,24 @@ $user = $stmt->fetch();
 // var_dump($user);
 
 if ($user) {
-    // パスワードを確認（password_verifyでハッシュ化されたパスワードを照合）
+    // ユーザーが見つかった場合
 
-    if (password_verify($password, $user['Password'])) {
-        // ログイン成功
-        $_SESSION['user_id'] = $user['UserID'];
-        $_SESSION['email'] = $user['Email'];
-        $_SESSION['user_name'] = $user['username'];
-        header("Location: ../index.php"); // ログイン後のページにリダイレクト
+    // ステータスがactiveであるか確認
+    if ($user['status'] === 'active') {
+        // パスワードを確認（password_verifyでハッシュ化されたパスワードを照合）
+        if (password_verify($password, $user['Password'])) {
+            // ログイン成功
+            $_SESSION['user_id'] = $user['UserID'];
+            $_SESSION['email'] = $user['Email'];
+            $_SESSION['user_name'] = $user['username'];
+            header("Location: ../index.php"); // ログイン後のページにリダイレクト
+        } else {
+            // ログイン失敗
+            header("Location: login.php?error=invalid_credentials");
+        }
     } else {
-        // ログイン失敗
-        header("Location: login.php?error=invalid_credentials");
+        // ステータスがinactiveの場合
+        header("Location: login.php?error=user_not_found");
     }
 } else {
     // ユーザーが見つからない

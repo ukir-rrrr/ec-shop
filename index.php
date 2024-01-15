@@ -3,8 +3,8 @@
 <?php
 session_start();
 
-
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,7 +18,7 @@ session_start();
             <div class="left-nav">
                 <ul>
                     <li><a href="index.php">ホーム</a></li>
-                    <li><a href="#">新着商品</a></li>
+                    <li><a href="./products/new_arrival.php">新着商品</a></li>
                     <li><a href="./user/contactform.php">お問い合わせ</a></li>
                 </ul>
             </div>
@@ -36,7 +36,7 @@ session_start();
                     ?>
                     <li><a href="./cart/shopping_cart.php?view_cart=true">カートを見る</a></li>
                 </ul>
-                <form action="/search" method="get" class="search-form">
+                <form action="./products/search_products.php" method="get" class="search-form">
                     <input type="text" name="q" placeholder="検索...">
                     <button type="submit">検索</button>
                 </form>
@@ -59,11 +59,11 @@ session_start();
                   <img src="./main-image/mens.jpg" alt="メンズ">
                   <h3>MEN'S</h3>
               </a>
-              <a href="womens.php" class="product-box">
+              <a href="./products/womens.php" class="product-box">
                   <img src="./main-image/womens.jpg" alt="ウィメンズ">
                   <h3>WOMEN'S</h3>
               </a>
-              <a href="kids.php" class="product-box">
+              <a href="./products/kids.php" class="product-box">
                   <img src="./main-image/kids.jpg" alt="キッズ">
                   <h3>KID'S</h3>
               </a>

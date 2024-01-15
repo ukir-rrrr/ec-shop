@@ -1,0 +1,105 @@
+header {
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%; /* ナビゲーションの幅を100%に設定 */
+}
+
+nav .left-nav,
+nav .right-nav {
+  display: flex;
+  align-items: center;
+}
+
+nav .left-nav {
+  justify-content: flex-start;
+  flex-grow: 1; /* 左ナビゲーション項目にスペースを均等に割り当てる */
+}
+
+nav .right-nav {
+  justify-content: flex-end; /* 右ナビゲーション項目を右寄せ */
+  flex-grow: 0; /* 右ナビゲーション項目は余分なスペースを取らない */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form input[type="text"] {
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 14px;
+  color: #000; /* 入力テキストの色を黒に設定 */
+  background-color: #fff; /* 検索ボックスの背景色を白に設定 */
+  border: 1px solid #aaa; /* 境界線を追加 */
+}
+
+.search-form button {
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, footer {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 20px 0px;
+}
+
+.product {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}

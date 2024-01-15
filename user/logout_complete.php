@@ -13,7 +13,9 @@ session_start();
 <body>
     <div class="completion-container">
         <h2>ログアウトしました</h2>
-        <a href="../index.php">ホームに戻る</a>
+        <form action="../index.php" method="post">
+            <button type="submit">ホームへ戻る</button>
+        </form>
     </div>
 </body>
 </html>

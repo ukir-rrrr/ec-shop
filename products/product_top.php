@@ -26,9 +26,9 @@ if(isset($_SESSION["login"]) === false) {
 商品管理TOP<br><br>
     <a href="mens_list.php">メンズ</a>
     <br><br>
-    <a href="womens.php">ウィメンズ</a>
+    <a href="womens_list.php">ウィメンズ</a>
     <br><br>
-    <a href="kids.php">キッズ</a>
+    <a href="kids_list.php">キッズ</a>
     <br><br>
     <a href="product_add.php">商品追加</a>
     <br><br>

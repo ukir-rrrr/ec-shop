@@ -1,5 +1,4 @@
 <?php
-// http://localhost/EC-shop/products/mens.php
 session_start();
 ?>
 
@@ -16,7 +15,7 @@ session_start();
             <div class="left-nav">
                 <ul>
                     <li><a href="../index.php">ホーム</a></li>
-                    <li><a href="new_arrival.php">新着商品</a></li>
+                    <li><a href="#">新着商品</a></li>
                     <li><a href="../user/contactform.php">お問い合わせ</a></li>
                 </ul>
             </div>
@@ -42,50 +41,43 @@ session_start();
         </nav>
     </header>
 
-        <?php
-        // データベース接続
-        require_once("../Databaseclass/Databaseclass.php");
-        $pdo = connectToDatabase($host, $dbname, $username, $password);
 
-        // ページネーションの設定
-        $productsPerPage = 4;
-        $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-        $offset = ($page - 1) * $productsPerPage;
+<?php
+// データベース接続
+require_once("../Databaseclass/Databaseclass.php");
+$pdo = connectToDatabase($host, $dbname, $username, $password);
 
+// 検索ボックスから送信されたキーワードを取得
+if (isset($_GET['q'])) {
+    $search_keyword = $_GET['q'];
 
-        // 商品情報をメンズカテゴリから取得（LIMITとOFFSETを使用）
-        $category_id = 1;
-        $stmt = $pdo->prepare("SELECT * FROM products WHERE category_id = ? LIMIT ? OFFSET ?");
-        $stmt->execute([$category_id, $productsPerPage, $offset]);
+    // 商品テーブルからキーワードで検索
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE name LIKE ? OR description LIKE ?");
+    $stmt->execute(["%" . $search_keyword . "%", "%" . $search_keyword . "%"]);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // 商品情報を表示
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    // 検索結果を表示
+    if ($results) {
+        echo "<h2>検索結果</h2>";
+        foreach ($results as $result) {
             echo "<div class='product'>";
-            echo "<img src='" . $row['image_path'] . "' alt='" . $row['name'] . "'>";
-            echo "<h3>" . $row['name'] . "</h3>";
-            echo "<p>価格: " . intval($row['price']) . "円</p>";
-            echo "<p>商品説明: " . $row['description'] . "</p>";
+            echo "<img src='" . $result['image_path'] . "' alt='" . $result['name'] . "'>";
+            echo "<h3>" . $result['name'] . "</h3>";
+            echo "<p>価格: " . intval($result['price']) . "円</p>";
+            echo "<p>詳細: " . $result['description'] . "</p>";
             echo "<form action='../cart/add_to_cart.php' method='post'>";
-            echo "<input type='hidden' name='product_id' value='" . $row['id'] . "'>";
+            echo "<input type='hidden' name='product_id' value='" . $result['id'] . "'>";
             echo "<input type='submit' value='カートに追加'>";
             echo "</form>";
             echo "</div>";
         }
 
-        // ページネーションの表示
-        $totalProducts = $pdo->query("SELECT COUNT(*) FROM products WHERE category_id = $category_id")->fetchColumn();
-        $totalPages = ceil($totalProducts / $productsPerPage);
 
-        echo "<div class='pagination'>";
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo "<a href='?page=$i'>$i</a>";
-            if ($i < $totalPages) {
-                echo "・";
-            }
-        }
-        echo "</div>";
-?>
+    } else {
+        echo "<p>検索結果が見つかりませんでした。</p>";
+        echo "<form action='../index.php' method='post'>";
+        echo "<input type='submit' value='ホームに戻る'>";
+        echo "</form>";
+    }
 
-    <footer>
-  <p>&copy; 2023 ファッションECサイト</p>
-</footer>
+}

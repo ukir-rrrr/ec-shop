@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title>ログアウト確認</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="../style/user.css">
 </head>
 <body>
     <div class="confirmation-container">
@@ -22,7 +22,10 @@ if (!isset($_SESSION['user_id'])) {
         <form action="logout.php" method="post">
             <button type="submit">ログアウトする</button>
         </form>
-        <a href="../index.php">戻る</a>
+        <br>
+        <form action="../index.php" method="post">
+            <button type="submit">ホームへ戻る</button>
+        </form>
     </div>
 </body>
 </html>
