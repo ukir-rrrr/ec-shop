@@ -16,7 +16,8 @@ CREATE TABLE Users (
     First_name VARCHAR(50),
     Last_name_kana VARCHAR(50),
     First_name_kana VARCHAR(50),
-    Zipcode VARCHAR(7)
+    Zipcode VARCHAR(7),
+    status VARCHAR(10) NOT NULL DEFAULT 'active'
 );
 
 CREATE TABLE staff (

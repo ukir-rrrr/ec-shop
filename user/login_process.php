@@ -27,7 +27,7 @@ $user = $stmt->fetch();
 
 
 
- var_dump($user);
+//  var_dump($user);
 
 if ($user) {
     // ユーザーが見つかった場合
@@ -47,10 +47,12 @@ if ($user) {
         }
     } else {
         // ステータスがinactiveの場合
-        header("Location: login.php?error=user_not_found");
+        header("Location: login.php?error=invalid_credentials");
     }
 } else {
     // ユーザーが見つからない
     header("Location: login.php?error=user_not_found");
 }
+
+
 ?>
