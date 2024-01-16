@@ -42,4 +42,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
-<a href="./staff_login_top.php">管理画面TOPへ</a>
+<a href="staff_login_top.php">管理画面TOPへ</a>

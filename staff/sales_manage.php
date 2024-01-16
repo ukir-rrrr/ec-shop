@@ -84,7 +84,7 @@ $months = range(1, 12);
     </tbody>
 </table>
 <br>
-<a href="./staff_login_top.php">管理画面TOPへ</a>
+<a href="staff_login_top.php">管理画面TOPへ</a>
 
 </body>
 </html>

@@ -30,7 +30,6 @@ session_start();
                         echo '<li>' . htmlspecialchars($_SESSION['user_name'], ENT_QUOTES) . '様 ログイン中</li>';
                         echo '<li><a href="./user/mypage.php">マイページ</a></li>';
                         echo '<li><a href="./user/logout_confirm.php">ログアウト</a></li>';
-                        var_dump($_SESSION);
                     } else {
                         echo '<li><a href="./user/login.php">ログイン</a></li>';
                     }

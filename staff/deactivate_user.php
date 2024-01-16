@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$user_id]);
         echo "ユーザー「{$user_name}」を退会させました。";
         echo "<br><br>";
-        echo "<a href='./staff_login_top.php'>管理画面TOPへ</a>";
+        echo "<a href='staff_login_top.php'>管理画面TOPへ</a>";
 
     } catch (Exception $e) {
         // エラーが発生した場合の処理を追加
         echo "エラーが発生しました：" . $e->getMessage();
         echo "<br><br>";
-        echo "<a href='./staff_login_top.php'>管理画面TOPへ</a>";
+        echo "<a href='staff_login_top.php'>管理画面TOPへ</a>";
     } finally {
         // データベース接続を閉じる
         $pdo = null;
