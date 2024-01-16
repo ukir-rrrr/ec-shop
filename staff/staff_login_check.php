@@ -40,6 +40,6 @@ if(empty($rec["name"]) === true) {
 }
 catch(Exception $e) {
     echo "只今障害が発生しております。<br><br>";
-    echo "<a href='staff_login.html'>戻る</a>";
+    echo "<a href='staff_login.php'>戻る</a>";
 }
 ?>

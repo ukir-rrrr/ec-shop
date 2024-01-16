@@ -14,6 +14,8 @@ $password = $_POST['password'];
 // SQLインジェクションを防ぐためにプリペアドステートメントを使用
 $stmt = $pdo->prepare("SELECT * FROM Users WHERE Email = :email");
 
+
+
 // パラメータをバインド
 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 
@@ -23,7 +25,9 @@ $stmt->execute();
 // 結果を取得
 $user = $stmt->fetch();
 
-// var_dump($user);
+
+
+ var_dump($user);
 
 if ($user) {
     // ユーザーが見つかった場合

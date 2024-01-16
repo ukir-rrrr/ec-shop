@@ -7,7 +7,7 @@ grant all privileges on ecshop_db. *to ecshop_user@'localhost' identified by 'ec
 
 CREATE TABLE Users (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
     Address TEXT,

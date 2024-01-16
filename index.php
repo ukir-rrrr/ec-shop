@@ -72,6 +72,6 @@ session_start();
     </main>
 
 <footer>
-  <p>&copy; 2023 ファッションECサイト</p>
+  <p>&copy; 2023 ファッションECサイト </p>
 </footer>
 </body>
