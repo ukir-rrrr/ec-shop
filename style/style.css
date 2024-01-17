@@ -15,11 +15,25 @@
 }
 
 /* スマートフォン向けのスタイル */
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
+  /* スマートフォンサイズのデバイス向けのスタイル */
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    display: block;
+  }
+
   nav .right-nav {
     order: -1; /* ナビゲーションを上に移動 */
     display: block;
   }
+
+  .search-form {
+    width: 100%; /* 検索フォームの幅を調整 */
+  }
+
 }
 
 
@@ -59,8 +73,9 @@ nav .left-nav {
 
 nav .right-nav {
   justify-content: flex-end; /* 右ナビゲーション項目を右寄せ */
-  flex-grow: 0; /* 右ナビゲーション項目は余分なスペースを取らない */
+   flex-grow: 0; /* 右ナビゲーション項目は余分なスペースを取らない */
 }
+
 
 nav ul {
   list-style: none;
