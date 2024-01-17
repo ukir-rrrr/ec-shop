@@ -15,9 +15,9 @@
 }
 
 /* スマートフォン向けのスタイル */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   body {
-    font-size: 12px; /* スマートフォン向けのフォントサイズ */
+    font-size: 9px; /* スマートフォン向けのフォントサイズ */
   }
 }
 
