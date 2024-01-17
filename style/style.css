@@ -19,6 +19,14 @@
   body {
     font-size: 9px; /* スマートフォン向けのフォントサイズ */
   }
+  header {
+    background-color: #000;
+    color: #fff;
+    /* padding: 20px 20px; */
+    display: flex;
+    justify-content: space-between; /* 例：左右に分ける */
+    /* align-items: center; */
+  }
 }
 
 
