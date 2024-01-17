@@ -13,14 +13,6 @@
   }
 }
 
-/* スマートフォン向けのスタイル */
-@media screen and (max-width: 767px) {
-  body {
-    font-size: 12px; /* スマートフォン向けのフォントサイズ */
-  }
-}
-
-
 
 body {
   font-family: Arial, sans-serif;
@@ -83,4 +75,26 @@ button.form-button {
 
 button.form-button:hover {
   background-color: #45a049;
+}
+
+/* スマートフォン向けのスタイル */
+@media (max-width: 480px) {
+  /* スマートフォンサイズのデバイス向けのスタイル */
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    display: block;
+  }
+
+  nav .right-nav {
+    order: -1; /* ナビゲーションを上に移動 */
+    display: block;
+  }
+
+  .search-form {
+    width: 100%; /* 検索フォームの幅を調整 */
+  }
+
 }
