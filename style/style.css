@@ -14,29 +14,6 @@
   }
 }
 
-/* スマートフォン向けのスタイル */
-@media (max-width: 480px) {
-  /* スマートフォンサイズのデバイス向けのスタイル */
-  header {
-    flex-direction: column;
-  }
-
-  nav {
-    display: block;
-  }
-
-  nav .right-nav {
-    order: -1; /* ナビゲーションを上に移動 */
-    display: block;
-  }
-
-  .search-form {
-    width: 100%; /* 検索フォームの幅を調整 */
-  }
-
-}
-
-
 
 html, body {
   height: 100%;
@@ -69,7 +46,7 @@ nav .right-nav {
 nav .left-nav {
   justify-content: flex-start;
   flex-grow: 1; /* 左ナビゲーション項目にスペースを均等に割り当てる */
-}
+} */
 
 nav .right-nav {
   justify-content: flex-end; /* 右ナビゲーション項目を右寄せ */
@@ -218,21 +195,26 @@ footer {
   /* その他のモバイル向けのスタイル調整 */
 }
 
+/* スマートフォン向けのスタイル */
 @media (max-width: 480px) {
   /* スマートフォンサイズのデバイス向けのスタイル */
   header {
     flex-direction: column;
   }
 
+  nav {
+    display: block;
+  }
+
   nav .right-nav {
     order: -1; /* ナビゲーションを上に移動 */
+    display: block;
   }
 
   .search-form {
     width: 100%; /* 検索フォームの幅を調整 */
   }
 
-  /* その他のモバイル向けのスタイル調整 */
 }
 
 /* メディアクエリE */
