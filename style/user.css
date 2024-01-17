@@ -1,4 +1,26 @@
-/* ここからお問い合わせフォーム専用のスタイル */
+
+/* デスクトップデバイス向けのスタイル */
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 16px; /* デスクトップ向けのフォントサイズ */
+  }
+}
+
+/* タブレットデバイス向けのスタイル */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 14px; /* タブレット向けのフォントサイズ */
+  }
+}
+
+/* スマートフォン向けのスタイル */
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 12px; /* スマートフォン向けのフォントサイズ */
+  }
+}
+
+
 
 body {
   font-family: Arial, sans-serif;

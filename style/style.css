@@ -1,4 +1,28 @@
 /* style.css */
+
+/* デスクトップデバイス向けのスタイル */
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 16px; /* デスクトップ向けのフォントサイズ */
+  }
+}
+
+/* タブレットデバイス向けのスタイル */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 14px; /* タブレット向けのフォントサイズ */
+  }
+}
+
+/* スマートフォン向けのスタイル */
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 12px; /* スマートフォン向けのフォントサイズ */
+  }
+}
+
+
+
 html, body {
   height: 100%;
   margin: 0;
@@ -378,4 +402,3 @@ footer {
 .back-btn:hover {
   background-color: #e2e2e2;
 }
-

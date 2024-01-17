@@ -37,9 +37,14 @@ session_start();
                     <li><a href="./cart/shopping_cart.php?view_cart=true">カートを見る</a></li>
                 </ul>
                 <form action="./products/search_products.php" method="get" class="search-form">
-                    <input type="text" name="q" placeholder="検索...">
+                    <input type="text" name="q" placeholder="検索..." value="">
                     <button type="submit">検索</button>
                 </form>
+                <script>
+                    function clearSearchValue() {
+                        document.getElementById('searchInput').value = '';
+                    }
+                </script>
             </div>
         </nav>
     </header>

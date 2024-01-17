@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->execute([$category_id, $name, $description, $price, $stock, $image_path]);
 
     echo "商品を追加しました。<br>";
-    echo "<a href='../staff/staff_login_top.php'>管理画面TOPへ</a>";
+    echo "<a href='product_top.php'>商品画面TOPへ</a>";
 } else {
     // フォームがまだ送信されていない場合、フォームを表示
     ?>
