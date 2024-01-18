@@ -23,6 +23,26 @@ if (isset($_POST['selected_month'])) {
 
 // 月の選択肢を表示
 $months = range(1, 12);
+
+// CSV出力
+if (isset($_POST['export_csv'])) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="sales_data.csv"');
+
+    $output = fopen('php://output', 'w');
+
+    // ヘッダーを書き込む
+    fputcsv($output, array_keys($rows[0]));
+
+    // データを書き込む
+    foreach ($rows as $row) {
+        fputcsv($output, $row);
+    }
+
+    fclose($output);
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +103,12 @@ $months = range(1, 12);
         <?php endforeach; ?>
     </tbody>
 </table>
+<br>
+<!-- CSV出力ボタン -->
+<form action="" method="post">
+    <input type="submit" name="export_csv" value="CSV出力">
+</form>
+
 <br>
 <a href="staff_login_top.php">管理画面TOPへ</a>
 

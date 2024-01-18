@@ -86,6 +86,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php
 }
 ?>
-
+ <!-- CSV出力ボタン -->
+ <form action="pro_csv.php" method="post">
+        <input type="submit" name="export_csv" value="商品CSV出力">
+    </form>
+    <br>
 </body>
 </html>

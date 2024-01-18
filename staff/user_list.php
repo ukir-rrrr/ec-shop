@@ -7,16 +7,39 @@ if(isset($_SESSION["login"]) === false) {
     exit();
 } else {
     echo $_SESSION["name"]."さんログイン中";
-    echo "<br><br>";
 }
 
 // データベース接続
 require_once("../Databaseclass/Databaseclass.php");
 $pdo = connectToDatabase($host, $dbname, $username, $password);
 
+// // ユーザー情報を取得
+// $stmt = $pdo->query("SELECT * FROM Users");
+// $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 // ユーザー情報を取得
-$stmt = $pdo->query("SELECT * FROM Users");
+$stmt = $pdo->query("SELECT UserID, username, Email, Address, Phone, Last_name, First_name, Last_name_kana, First_name_kana, Zipcode, status FROM Users"); 
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+// CSV出力
+if (isset($_POST['export_csv'])) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="user_list.csv"');
+
+    $output = fopen('php://output', 'w');
+
+    // ヘッダーを書き込む
+    fputcsv($output, array_keys($users[0]));
+
+    // データを書き込む
+    foreach ($users as $user) {
+        fputcsv($output, $user);
+    }
+
+    fclose($output);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,5 +101,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 
 </html>
-<br><br>
+<br>
+<!-- CSV出力ボタン -->
+<form action="" method="post">
+    <input type="submit" name="export_csv" value="CSV出力">
+</form>
+
+<br>
 <a href="./staff_login_top.php">管理画面TOPへ</a>
